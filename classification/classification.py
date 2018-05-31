@@ -106,7 +106,7 @@ def main(_):
 
     with open('../A196_task2.txt', 'a') as f:
         for file_name, label_index in zip(file_names, logits):
-            str_ = file_name + ' ' + labels[label_index] + '\n'
+            str_ = file_name + ' ' + labels[label_index][:2].upper() + labels[label_index][2:] + '\n'
             f.write(str_)
 
 
