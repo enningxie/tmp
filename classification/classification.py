@@ -1,7 +1,6 @@
 # xz
 import argparse
 import sys
-import os
 import tensorflow as tf
 from read_box import get_tiny_image
 
@@ -11,8 +10,6 @@ FLAGS = None
 
 def arger():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--image', default='./saveImages', type=str, help='Absolute path to image file.')
     parser.add_argument(
         '--num_top_predictions',
         type=int,
@@ -83,9 +80,6 @@ def run_graph(image_data, labels, input_layer_name, output_layer_name,
 
 
 def main(_):
-    if not tf.gfile.Exists(FLAGS.image):
-        tf.logging.fatal('image file does not exist %s', FLAGS.image)
-
     if not tf.gfile.Exists(FLAGS.labels):
         tf.logging.fatal('labels file does not exist %s', FLAGS.labels)
 

@@ -2,6 +2,7 @@
 import os
 import cv2
 
+
 def input_data():
     filename = '/var/Data/xz/butterfly/det_test_btf.txt'
     name = []
@@ -25,14 +26,13 @@ def input_data():
 
 def box_image(name, xmin, ymin, xmax, ymax):
     image_dir = '/var/Data/xz/butterfly/JPEGImages'
-    # to_path = './saveImages'
     name_2 = ''
     image_data = []
     file_names = []
     for name_1, xmin_1, ymin_1, xmax_1, ymax_1 in zip(name, xmin, ymin, xmax, ymax):
         if name_1 != name_2:
             name_2 = name_1
-            image_path = os.path.join(image_dir, name_1 + '.jpg')
+            image_path = os.path.join(image_dir, name_1)
             file_names.append(name_1)
             image = cv2.imread(image_path)
             image_cp = image[int(ymin_1): int(ymax_1), int(xmin_1): int(xmax_1)]
